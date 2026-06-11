@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Camino Charities — Nourish. Heal. Serve.</title>
+<meta name="description" content="Camino Charities fights food insecurity across Oklahoma through the annual Shell Out for Hunger Clay Shoot, partnering with the Oklahoma Food Bank, Youth and Family Services, and ICAN.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Public+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #FBFAF6;
+    --grid-line: rgba(30, 58, 95, 0.05);
+    --ink: #16243A;          /* deed-book navy */
+    --ink-soft: #43536B;
+    --clay: #C24A1B;         /* clay-target orange / Oklahoma red dirt */
+    --wheat: #E5AE3F;        /* prairie gold */
+    --sage: #5F7A5A;         /* field green */
+    --line: #D8D3C6;
+    --display: 'Zilla Slab', Georgia, serif;
+    --body: 'Public Sans', -apple-system, sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--body);
+    color: var(--ink);
+    background-color: var(--paper);
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 48px 48px;
+    line-height: 1.6;
+    font-size: 17px;
+  }
+
+  ::selection { background: var(--wheat); color: var(--ink); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+
+  /* ---------- header ---------- */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(251, 250, 246, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 28px; max-width: 1080px; margin: 0 auto;
+  }
+  .logo {
+    font-family: var(--display); font-weight: 700; font-size: 22px;
+    text-decoration: none; color: var(--ink);
+    display: flex; align-items: baseline; gap: 8px;
+  }
+  .logo span { color: var(--clay); }
+  .logo .tag {
+    font-family: var(--mono); font-size: 10px; font-weight: 400;
+    letter-spacing: 0.14em; color: var(--ink-soft);
+  }
+  nav.links { display: flex; gap: 28px; }
+  nav.links a {
+    text-decoration: none; color: var(--ink-soft);
+    font-size: 14px; font-weight: 500;
+    border-bottom: 2px solid transparent; padding-bottom: 2px;
+    transition: color .15s, border-color .15s;
+  }
+  nav.links a:hover, nav.links a:focus-visible { color: var(--clay); border-color: var(--wheat); }
+  .nav-cta {
+    font-family: var(--mono); font-size: 13px; font-weight: 600;
+    text-decoration: none; color: var(--paper);
+    background: var(--clay); padding: 10px 18px;
+    letter-spacing: 0.05em; transition: background .15s;
+  }
+  .nav-cta:hover, .nav-cta:focus-visible { background: var(--ink); }
+
+  /* ---------- hero ---------- */
+  .hero { position: relative; padding: 100px 0 130px; overflow: hidden; }
+  .eyebrow {
+    font-family: var(--mono); font-size: 12px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--clay); display: flex; align-items: center; gap: 12px;
+  }
+  .eyebrow::before {
+    content: ""; width: 10px; height: 10px;
+    background: var(--clay); transform: rotate(45deg); flex-shrink: 0;
+  }
+  .hero h1 {
+    font-family: var(--display); font-weight: 600;
+    font-size: clamp(42px, 7vw, 80px);
+    line-height: 1.05; max-width: 15ch; margin: 26px 0 28px;
+  }
+  .hero h1 em {
+    font-style: normal; color: var(--clay);
+    position: relative; white-space: nowrap;
+  }
+  .hero h1 em svg {
+    position: absolute; left: 0; bottom: -8px; width: 100%; height: 14px;
+    overflow: visible;
+  }
+  .hero p.lede { font-size: 19px; max-width: 54ch; color: var(--ink-soft); font-weight: 300; }
+  .hero p.lede strong { color: var(--ink); font-weight: 600; }
+  .hero-actions { margin-top: 40px; display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn {
+    font-family: var(--mono); font-size: 14px; font-weight: 600;
+    letter-spacing: 0.04em; text-decoration: none;
+    padding: 15px 26px; display: inline-block;
+    transition: transform .15s, background .15s, color .15s, border-color .15s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary { background: var(--ink); color: var(--paper); }
+  .btn-primary:hover { background: var(--clay); }
+  .btn-ghost { color: var(--ink); border: 1.5px solid var(--ink); }
+  .btn-ghost:hover { border-color: var(--clay); color: var(--clay); }
+
+  /* hero art: a clay target arcing over the prairie, trailing the camino */
+  .hero-art {
+    position: absolute; top: 30px; right: -60px;
+    width: 560px; height: 100%;
+    pointer-events: none;
+  }
+  @media (max-width: 940px) { .hero-art { display: none; } }
+
+  /* ---------- mile markers / sections ---------- */
+  section { padding: 90px 0; position: relative; }
+  .mile {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.18em;
+    color: var(--ink-soft); text-transform: uppercase;
+    display: flex; align-items: center; gap: 14px; margin-bottom: 14px;
+  }
+  .mile::before { content: ""; width: 46px; height: 1.5px; background: var(--clay); }
+  .mile b { color: var(--clay); font-weight: 600; }
+  h2 {
+    font-family: var(--display); font-weight: 600;
+    font-size: clamp(30px, 4vw, 44px); line-height: 1.15;
+    max-width: 24ch; margin-bottom: 18px;
+  }
+  .section-lede { max-width: 62ch; color: var(--ink-soft); font-weight: 300; font-size: 18px; }
+  .section-lede strong { color: var(--ink); font-weight: 600; }
+
+  /* ---------- mission (dark plat panel) ---------- */
+  .panel-dark {
+    background: var(--ink); color: var(--paper);
+    background-image:
+      linear-gradient(rgba(251,250,246,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(251,250,246,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .panel-dark h2 { color: var(--paper); }
+  .panel-dark .section-lede { color: #B9C2D2; }
+  .panel-dark .section-lede strong { color: var(--paper); }
+  .panel-dark .mile { color: #8E9BB1; }
+  .mission-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: center; }
+  .legal-desc {
+    font-family: var(--mono); font-size: 13.5px; line-height: 2;
+    border: 1px solid rgba(251,250,246,0.25); padding: 30px;
+    color: #C9D1DE; position: relative; background: rgba(0,0,0,0.18);
+  }
+  .legal-desc::before {
+    content: "FILED OF RECORD · OKLAHOMA";
+    position: absolute; top: -10px; left: 24px;
+    background: var(--ink); padding: 0 10px;
+    font-size: 10px; letter-spacing: 0.2em; color: var(--wheat);
+  }
+  .legal-desc strong { color: var(--paper); font-weight: 600; }
+
+  /* ---------- nourish / heal / serve ---------- */
+  .pillars {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--line);
+    border: 1px solid var(--line); margin-top: 56px;
+  }
+  .pillar {
+    background: var(--paper); padding: 44px 36px;
+    position: relative; transition: background .2s;
+  }
+  .pillar:hover { background: #F5F2E9; }
+  .pillar .word {
+    font-family: var(--display); font-size: clamp(34px, 4vw, 46px);
+    font-weight: 700; line-height: 1; display: block; margin-bottom: 6px;
+  }
+  .pillar .word::after { content: "."; color: var(--clay); }
+  .pillar .verb {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--ink-soft);
+    display: block; margin-bottom: 20px;
+  }
+  .pillar p { color: var(--ink-soft); font-size: 15.5px; font-weight: 300; }
+  .pillar p strong { color: var(--ink); font-weight: 600; }
+  .pillar .swatch { position: absolute; top: 0; left: 0; width: 100%; height: 4px; }
+  .pillar:nth-child(1) .swatch { background: var(--wheat); }
+  .pillar:nth-child(2) .swatch { background: var(--sage); }
+  .pillar:nth-child(3) .swatch { background: var(--clay); }
+
+  /* ---------- impact ledger ---------- */
+  .ledger { margin-top: 56px; border-top: 2px solid var(--ink); }
+  .ledger-row {
+    display: grid; grid-template-columns: 150px 1fr auto;
+    gap: 28px; align-items: baseline;
+    padding: 26px 0; border-bottom: 1px solid var(--line);
+  }
+  .ledger-row .yr { font-family: var(--mono); font-size: 13px; color: var(--clay); font-weight: 600; letter-spacing: 0.06em; }
+  .ledger-row .what { font-size: 16.5px; color: var(--ink-soft); font-weight: 300; }
+  .ledger-row .what strong { color: var(--ink); font-weight: 600; }
+  .ledger-row .num {
+    font-family: var(--display); font-size: clamp(24px, 3.2vw, 36px);
+    font-weight: 700; color: var(--ink); white-space: nowrap;
+  }
+
+  /* ---------- event feature ---------- */
+  .event-feature {
+    margin-top: 56px; border: 2px solid var(--ink);
+    background: var(--paper); overflow: hidden;
+  }
+  .event-copy { padding: 48px 44px; }
+  .event-copy .stamp {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em;
+    color: var(--clay); border: 1.5px solid var(--clay);
+    display: inline-block; padding: 5px 12px; margin-bottom: 22px;
+    transform: rotate(-2deg);
+  }
+  .event-copy h3 {
+    font-family: var(--display); font-size: clamp(28px, 3.6vw, 40px);
+    font-weight: 700; line-height: 1.1; margin-bottom: 16px;
+  }
+  .event-copy h3 span { color: var(--clay); }
+  .event-copy p { color: var(--ink-soft); font-weight: 300; margin-bottom: 14px; }
+  .event-copy p strong { color: var(--ink); font-weight: 600; }
+
+  /* ---------- the mini range ---------- */
+  .game-wrap {
+    position: relative; background: var(--ink);
+    height: 480px; cursor: crosshair;
+    border-top: 2px solid var(--ink);
+    touch-action: none; user-select: none; -webkit-user-select: none;
+  }
+  .game-wrap canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .game-hud {
+    position: absolute; top: 14px; left: 18px; right: 18px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: 0.14em;
+    color: var(--wheat); pointer-events: none;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+  }
+  .game-hud .venue { color: #8E9BB1; font-size: 10px; letter-spacing: 0.2em; }
+  .pull-btn {
+    position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
+    font-family: var(--mono); font-weight: 600; font-size: 15px;
+    letter-spacing: 0.14em; background: var(--clay); color: var(--paper);
+    border: none; padding: 13px 36px; cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+    transition: background .15s;
+  }
+  .pull-btn:hover { background: #9E3A12; }
+  .pull-btn:active { transform: translateX(-50%) scale(0.95); }
+  .pull-btn:disabled { opacity: 0.45; cursor: default; }
+  .game-over {
+    position: absolute; inset: 0; background: rgba(14, 24, 40, 0.88);
+    display: none; flex-direction: column; align-items: center; justify-content: center;
+    gap: 10px; text-align: center; padding: 28px; cursor: default;
+  }
+  .game-over.show { display: flex; }
+  .game-over .final {
+    font-family: var(--display); font-size: clamp(40px, 6vw, 64px);
+    font-weight: 700; color: var(--paper); line-height: 1;
+  }
+  .game-over .final span { color: var(--wheat); }
+  .game-over .quip { font-family: var(--mono); font-size: 13px; letter-spacing: 0.1em; color: var(--wheat); }
+  .game-over .meals { color: #B9C2D2; font-weight: 300; max-width: 44ch; font-size: 15px; }
+  .game-over .row { display: flex; gap: 14px; margin-top: 14px; flex-wrap: wrap; justify-content: center; }
+  .game-over .btn { padding: 12px 22px; font-size: 13px; }
+  .game-over .btn-again { background: var(--paper); color: var(--ink); border: none; cursor: pointer; font-family: var(--mono); font-weight: 600; letter-spacing: 0.06em; }
+  .game-over .btn-again:hover { background: var(--wheat); }
+  .game-over .btn-donate { background: var(--clay); color: var(--paper); }
+  .game-over .btn-donate:hover { background: #9E3A12; }
+  .game-hint {
+    position: absolute; bottom: 24px; left: 22px;
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.16em;
+    color: #8E9BB1; pointer-events: none;
+  }
+  @media (max-width: 900px) { .game-wrap { height: 400px; } .game-hint { display: none; } }
+
+  /* ---------- donate band ---------- */
+  .cta-band {
+    background: var(--clay); color: var(--paper);
+    background-image:
+      linear-gradient(rgba(251,250,246,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(251,250,246,0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .cta-band h2 { color: var(--paper); max-width: 28ch; }
+  .cta-band .mile { color: #F2D5C7; }
+  .cta-band .mile::before { background: var(--wheat); }
+  .cta-band p { color: #F6E3D9; max-width: 56ch; font-weight: 300; font-size: 18px; }
+  .cta-band .btn-primary { background: var(--paper); color: var(--clay); }
+  .cta-band .btn-primary:hover { background: var(--wheat); color: var(--ink); }
+  .cta-band .btn-ghost { color: var(--paper); border-color: var(--paper); }
+  .cta-band .btn-ghost:hover { color: var(--wheat); border-color: var(--wheat); }
+
+  /* ---------- footer ---------- */
+  footer { background: var(--ink); color: #8E9BB1; padding: 64px 0 40px; font-size: 14px; }
+  .foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; }
+  footer .logo { color: var(--paper); margin-bottom: 14px; }
+  footer h4 {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--wheat); margin-bottom: 16px; font-weight: 500;
+  }
+  footer a { color: #B9C2D2; text-decoration: none; display: block; margin-bottom: 9px; }
+  footer a:hover { color: var(--paper); }
+  .foot-legal {
+    margin-top: 52px; padding-top: 24px;
+    border-top: 1px solid rgba(251,250,246,0.12);
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.04em;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  }
+
+  /* ---------- reveal animation ---------- */
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+    .arc-path, .clay-disc { animation: none !important; stroke-dashoffset: 0 !important; }
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 900px) {
+    nav.links { display: none; }
+    .mission-grid { grid-template-columns: 1fr; gap: 40px; }
+    .pillars { grid-template-columns: 1fr; }
+    .ledger-row { grid-template-columns: 1fr; gap: 6px; }
+    .event-feature { grid-template-columns: 1fr; }
+    .foot-grid { grid-template-columns: 1fr; gap: 36px; }
+    .hero { padding: 64px 0 84px; }
+    section { padding: 64px 0; }
+  }
+
+  a:focus-visible, .btn:focus-visible { outline: 3px solid var(--wheat); outline-offset: 3px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a class="logo" href="#top">Camino <span>Charities</span> <span class="tag">NOURISH · HEAL · SERVE</span></a>
+    <nav class="links" aria-label="Main">
+      <a href="#mission">Mission</a>
+      <a href="#impact">Impact</a>
+      <a href="#event">2026 Clay Shoot</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="https://givebutter.com/camino-charities">DONATE</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <div class="hero">
+    <!-- a clay target launched over the prairie, breaking into meals -->
+    <svg class="hero-art" viewBox="0 0 560 700" fill="none" aria-hidden="true">
+      <!-- arc of the clay -->
+      <path class="arc-path" d="M-10 640 C 140 380, 300 180, 520 110"
+        stroke="#C24A1B" stroke-width="2.5" stroke-dasharray="10 9" stroke-linecap="round"/>
+      <!-- the clay disc -->
+      <g class="clay-disc" transform="translate(520,110)">
+        <ellipse cx="0" cy="0" rx="34" ry="13" fill="#C24A1B"/>
+        <ellipse cx="0" cy="-5" rx="34" ry="11" fill="#E5AE3F"/>
+        <ellipse cx="0" cy="-6" rx="20" ry="6" fill="#C24A1B"/>
+      </g>
+      <!-- prairie horizon -->
+      <path d="M-20 660 C 120 640, 300 670, 580 645" stroke="#5F7A5A" stroke-width="2"/>
+      <path d="M40 660 q 4 -16 8 0 M52 661 q 4 -14 8 0 M300 666 q 4 -16 8 0 M312 667 q 4 -14 8 0" stroke="#5F7A5A" stroke-width="1.5"/>
+      <!-- trap house launching the bird -->
+      <path d="M-14 652 l12 -24 l52 -5 l16 28 z" stroke="#43536B" stroke-width="2" fill="#FBFAF6"/>
+      <rect x="8" y="630" width="22" height="6" fill="#C24A1B"/>
+      <!-- survey markers along the arc -->
+      <g font-family="IBM Plex Mono, monospace" font-size="11" fill="#43536B" letter-spacing="2">
+        <g transform="translate(112, 472)"><rect x="-5" y="-5" width="10" height="10" fill="#C24A1B" transform="rotate(45)"/><text x="14" y="4">PULL.</text></g>
+        <g transform="translate(268, 290)"><rect x="-5" y="-5" width="10" height="10" fill="#E5AE3F" transform="rotate(45)"/><text x="14" y="4">GIVE.</text></g>
+        <g transform="translate(408, 168)"><rect x="-5" y="-5" width="10" height="10" fill="#5F7A5A" transform="rotate(45)"/><text x="14" y="4">FEED.</text></g>
+      </g>
+    </svg>
+
+    <div class="wrap">
+      <div class="eyebrow">Service to our community · Oklahoma</div>
+      <h1>One clay at a time, we're breaking <em>hunger<svg viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path d="M2 10 C 60 2, 120 13, 180 7 S 270 4, 298 9" stroke="#E5AE3F" stroke-width="5" fill="none" stroke-linecap="round"/></svg></em> in Oklahoma.</h1>
+      <p class="lede">Food insecurity still touches too many Oklahoma families — especially in rural and low-income communities. Camino Charities, the giving arm of <strong>Camino Natural Resources</strong>, turns community engagement into <strong>millions of meals</strong> through events like the annual Shell Out for Hunger Clay Shoot.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://givebutter.com/camino-charities">Support the service</a>
+        <a class="btn btn-ghost" href="#event">Shell Out for Hunger →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ MISSION ============ -->
+  <section class="panel-dark" id="mission">
+    <div class="wrap mission-grid">
+      <div class="reveal">
+        <div class="mile"><b>MILE 1</b> WHY WE SERVE</div>
+        <h2>Hunger doesn't follow section lines.</h2>
+        <p class="section-lede">Food disparities contribute to poor health outcomes, educational setbacks, and economic instability across the communities where we live and operate. Camino answers with strategy and shoulder-to-shoulder work — combining <strong>community engagement with focused fundraising</strong> to provide immediate relief and build long-term resilience.</p>
+      </div>
+      <div class="legal-desc reveal">
+        WHEREAS, no family's table should sit empty in a state this generous;<br><br>
+        AND WHEREAS, immediate relief without <strong>long-term resilience</strong> is only half the job;<br><br>
+        NOW THEREFORE, we commit our hands, hours, and dollars to the fight against food insecurity. <strong>Nourish. Heal. Serve.</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NOURISH HEAL SERVE ============ -->
+  <section id="how">
+    <div class="wrap">
+      <div class="mile reveal"><b>MILE 2</b> HOW WE WORK</div>
+      <h2 class="reveal">Three words. One promise.</h2>
+
+      <div class="pillars">
+        <div class="pillar reveal">
+          <span class="swatch"></span>
+          <span class="word">Nourish</span>
+          <span class="verb">Meals on tables</span>
+          <p>Dollars raised become <strong>millions of meals</strong> through the <strong>Oklahoma Food Bank</strong>, reaching the rural and low-income communities where access to nutritious food is hardest to come by.</p>
+        </div>
+        <div class="pillar reveal">
+          <span class="swatch"></span>
+          <span class="word">Heal</span>
+          <span class="verb">Families on their feet</span>
+          <p>Partnering with <strong>Youth and Family Services</strong> and <strong>ICAN</strong> to give families in crisis the resources to rebuild — because recovery takes more than a single meal.</p>
+        </div>
+        <div class="pillar reveal">
+          <span class="swatch"></span>
+          <span class="word">Serve</span>
+          <span class="verb">Neighbors beside neighbors</span>
+          <p>Camino employees show up in person — organizing, volunteering, and fundraising — turning a company footprint into a <strong>community handprint</strong>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ IMPACT ============ -->
+  <section id="impact" style="padding-top: 20px;">
+    <div class="wrap">
+      <div class="mile reveal"><b>MILE 3</b> THE LEDGER</div>
+      <h2 class="reveal">Impact, filed of record.</h2>
+      <p class="section-lede reveal">We track our giving the way we track our title — carefully, and in the open.</p>
+
+      <div class="ledger reveal">
+        <div class="ledger-row">
+          <span class="yr">TO DATE</span>
+          <span class="what"><strong>Raised for hunger relief</strong> through Shell Out for Hunger and community fundraising</span>
+          <span class="num">Hundreds of thousands</span>
+        </div>
+        <div class="ledger-row">
+          <span class="yr">AND COUNTING</span>
+          <span class="what"><strong>Meals provided</strong> to Oklahoma families in need</span>
+          <span class="num">Millions</span>
+        </div>
+        <div class="ledger-row">
+          <span class="yr">SIDE BY SIDE</span>
+          <span class="what"><strong>Community partners</strong> — Oklahoma Food Bank · Youth and Family Services · ICAN</span>
+          <span class="num">3 + growing</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EVENT ============ -->
+  <section id="event" style="padding-top: 20px;">
+    <div class="wrap">
+      <div class="mile reveal"><b>MILE 4</b> THE MAIN EVENT</div>
+      <h2 class="reveal">Where good aim meets a good cause.</h2>
+
+      <div class="event-feature reveal">
+        <div class="event-copy">
+          <span class="stamp">SEPT 25, 2026 · THE CEDAR GATE</span>
+          <h3>Shell Out <span>for Hunger</span> Clay Shoot</h3>
+          <p>Friday, <strong>September 25, 2026</strong> at <strong>The Cedar Gate</strong> in Kingfisher, Oklahoma. One day on the course — squads, stations, raffles, and bragging rights — and every entry, sponsorship, and missed bird put toward the fight against food insecurity.</p>
+          <p><strong>Hundreds of thousands of dollars raised.</strong> Millions of meals delivered. And the only tournament where a "shell out" is exactly what we're asking you to do.</p>
+          <p>Think you're ready for September? <strong>Warm up on the range below</strong> — ten birds, hit the PULL button, and see how many you can dust.</p>
+          <div class="hero-actions" style="margin-top: 28px;">
+            <a class="btn btn-primary" href="#contact">Register a squad</a>
+            <a class="btn btn-ghost" href="#contact">Become a sponsor</a>
+          </div>
+        </div>
+        <div class="game-wrap" id="gameWrap" aria-label="Mini clay shooting game — click or tap the flying clays to break them">
+          <canvas id="clayCanvas"></canvas>
+          <div class="game-hud">
+            <span>HITS <span id="hudHits">0</span> / <span id="hudThrown">0</span></span>
+            <span class="venue">09.25.2026 · THE CEDAR GATE · KINGFISHER, OK</span>
+            <span>BIRDS LEFT <span id="hudLeft">10</span></span>
+          </div>
+          <div class="game-hint">CLICK / TAP TO SHOOT</div>
+          <button class="pull-btn" id="pullBtn" type="button">PULL!</button>
+          <div class="game-over" id="gameOver">
+            <div class="quip" id="overQuip">ROUND COMPLETE</div>
+            <div class="final"><span id="overHits">0</span> / 10</div>
+            <p class="meals" id="overMeals"></p>
+            <div class="row">
+              <button class="btn btn-again" id="againBtn" type="button">SHOOT ANOTHER ROUND</button>
+              <a class="btn btn-donate" href="https://givebutter.com/camino-charities">SHELL OUT FOR REAL</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DONATE ============ -->
+  <section class="cta-band" id="donate">
+    <div class="wrap">
+      <div class="mile"><b>MILE 5</b> MAKE AN IMPACT TODAY</div>
+      <h2>The shortest distance between you and a family's next meal.</h2>
+      <p>Every contribution — large or small — moves directly into the fight against hunger in Oklahoma. Support the service with a donation, sponsor the shoot, or bring your team to the line.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://givebutter.com/camino-charities">Donate now</a>
+        <a class="btn btn-ghost" href="#contact">Partner with us</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="#top">Camino <span style="color:#E5AE3F">Charities</span></a>
+        <p style="max-width: 40ch; font-weight: 300;">The charitable arm of Camino Natural Resources — fighting food insecurity and building resilient communities across Oklahoma.</p>
+      </div>
+      <div>
+        <h4>Navigate</h4>
+        <a href="#mission">Why We Serve</a>
+        <a href="#impact">Impact</a>
+        <a href="#event">Shell Out for Hunger</a>
+        <a href="https://givebutter.com/camino-charities">Donate</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="mailto:communityoutreach@caminoresources.com">communityoutreach@caminoresources.com</a>
+        <a href="https://www.caminoresources.com">caminoresources.com</a>
+        <a href="https://www.linkedin.com/company/camino-natural-resources/">LinkedIn</a>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <span>© 2026 CAMINO CHARITIES</span>
+      <span>NOURISH · HEAL · SERVE</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const els = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    els.forEach(el => el.classList.add('in'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    els.forEach(el => io.observe(el));
+  }
+
+  // draw the clay's flight path on load
+  const path = document.querySelector('.arc-path');
+  const disc = document.querySelector('.clay-disc');
+  if (path && !reduce) {
+    const len = path.getTotalLength();
+    path.style.strokeDashoffset = len;
+    path.style.transition = 'stroke-dashoffset 2.2s ease-out';
+    if (disc) {
+      disc.style.opacity = '0';
+      disc.style.transition = 'opacity .6s ease 1.8s';
+    }
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      path.style.strokeDashoffset = '0';
+      if (disc) disc.style.opacity = '1';
+    }));
+  }
+</script>
+
+<script>
+/* ============ SHELL OUT FOR HUNGER — mini range ============ */
+(function () {
+  const wrap = document.getElementById('gameWrap');
+  const cv = document.getElementById('clayCanvas');
+  if (!wrap || !cv) return;
+  const ctx = cv.getContext('2d');
+
+  const COLORS = {
+    skyTop: '#101C30', skyMid: '#24344F', skyLow: '#6E4030', skyHorizon: '#8A4527',
+    ground: '#0E1828', cedar: '#13202F', silhouette: '#0B1422',
+    clay: '#C24A1B', wheat: '#E5AE3F', sage: '#5F7A5A', slate: '#43536B', paper: '#FBFAF6'
+  };
+
+  const ROUND_BIRDS = 10;
+  let W = 0, H = 0, hz = 0, S = 1;
+  let trap = { x: 0, y: 0 };
+  let shooter = { x: 0, feetY: 0, shoulder: { x: 0, y: 0 } };
+  let stars = [], grass = [], cedars = [];
+
+  let birds = [], shards = [], tracers = [];
+  let hits = 0, thrown = 0, flash = 0;
+  let aim = { x: 0, y: 0 };
+  let roundOver = false;
+  let last = performance.now();
+
+  const hudHits = document.getElementById('hudHits');
+  const hudThrown = document.getElementById('hudThrown');
+  const hudLeft = document.getElementById('hudLeft');
+  const pullBtn = document.getElementById('pullBtn');
+  const overEl = document.getElementById('gameOver');
+  const overHits = document.getElementById('overHits');
+  const overQuip = document.getElementById('overQuip');
+  const overMeals = document.getElementById('overMeals');
+  const againBtn = document.getElementById('againBtn');
+
+  /* ---------- layout ---------- */
+  function resize() {
+    const r = wrap.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    cv.width = Math.round(r.width * dpr);
+    cv.height = Math.round(r.height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    W = r.width; H = r.height;
+    S = H / 480;
+    hz = H * 0.8;
+    trap = { x: W * 0.14, y: hz - 6 * S };
+    shooter.x = W * 0.78;
+    shooter.feetY = hz + 16 * S;
+    shooter.shoulder = { x: shooter.x + 2 * S, y: shooter.feetY - 96 * S };
+    aim.x = aim.x || W * 0.45; aim.y = aim.y || H * 0.3;
+    // scatter scenery deterministically
+    stars = []; grass = []; cedars = [];
+    let seed = 7;
+    const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    for (let i = 0; i < 14; i++) stars.push({ x: W * (0.45 + rnd() * 0.55), y: H * rnd() * 0.3, r: 0.8 + rnd() * 1 });
+    for (let i = 0; i < 12; i++) grass.push({ x: W * rnd(), y: hz + (4 + rnd() * 14) * S, h: (8 + rnd() * 8) * S });
+    cedars = [
+      { x: W * 0.015, w: 30, h: 60 }, { x: W * 0.055, w: 22, h: 42 },
+      { x: W * 0.9, w: 34, h: 66 }, { x: W * 0.95, w: 26, h: 50 }, { x: W * 0.985, w: 20, h: 36 }
+    ];
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  /* ---------- tiny sounds (no assets) ---------- */
+  let actx = null;
+  function sound(freq, dur, type, vol) {
+    try {
+      actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+      const o = actx.createOscillator(), g = actx.createGain();
+      o.type = type; o.frequency.value = freq;
+      g.gain.setValueAtTime(vol, actx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.001, actx.currentTime + dur);
+      o.connect(g); g.connect(actx.destination);
+      o.start(); o.stop(actx.currentTime + dur);
+    } catch (e) { /* sound is a bonus, not a requirement */ }
+  }
+  const bang = () => sound(90, 0.12, 'square', 0.12);
+  const pop = () => sound(620, 0.18, 'triangle', 0.16);
+  const thwip = () => sound(300, 0.1, 'sine', 0.08);
+
+  /* ---------- game actions ---------- */
+  function pull() {
+    if (roundOver || thrown >= ROUND_BIRDS || birds.length >= 2) return;
+    const remaining = ROUND_BIRDS - thrown;
+    const pair = remaining >= 2 && birds.length === 0 && Math.random() < 0.22;
+    const count = pair ? 2 : 1;
+    for (let i = 0; i < count; i++) {
+      birds.push({
+        x: trap.x + (Math.random() * 8 - 4) * S,
+        y: trap.y - 6 * S,
+        vx: W * (0.12 + Math.random() * 0.09) * (i === 1 ? 0.84 : 1),
+        vy: -H * (1.05 + Math.random() * 0.2) * (i === 1 ? 0.92 : 1),
+        rot: 0, spin: 5 + Math.random() * 4, trail: []
+      });
+      thrown++;
+    }
+    thwip();
+    updateHud();
+  }
+
+  function shoot(px, py) {
+    if (roundOver) return;
+    aim.x = px; aim.y = py;
+    flash = 0.1;
+    bang();
+    const m = muzzle();
+    tracers.push({ x1: m.x, y1: m.y, x2: px, y2: py, t: 0.18 });
+    // nearest bird within forgiveness radius
+    const R = 34 * Math.max(S, 0.8);
+    let best = -1, bd = Infinity;
+    birds.forEach((b, i) => {
+      const d = Math.hypot(b.x - px, b.y - py);
+      if (d < R && d < bd) { bd = d; best = i; }
+    });
+    if (best >= 0) {
+      const b = birds.splice(best, 1)[0];
+      breakClay(b);
+      hits++;
+      pop();
+      updateHud();
+      checkEnd();
+    }
+  }
+
+  function breakClay(b) {
+    for (let i = 0; i < 14; i++) {
+      const a = Math.random() * Math.PI * 2, sp = (60 + Math.random() * 180) * S;
+      shards.push({
+        x: b.x, y: b.y,
+        vx: Math.cos(a) * sp + b.vx * 0.25, vy: Math.sin(a) * sp - 40 * S,
+        r: (1.5 + Math.random() * 3) * S, t: 0.9 + Math.random() * 0.5,
+        c: Math.random() < 0.45 ? COLORS.wheat : COLORS.clay,
+        rot: Math.random() * 6, spin: Math.random() * 10 - 5
+      });
+    }
+  }
+
+  function muzzle() {
+    const sh = shooter.shoulder;
+    const ang = Math.atan2(aim.y - sh.y, aim.x - sh.x);
+    const len = 64 * S;
+    return { x: sh.x + Math.cos(ang) * len, y: sh.y + Math.sin(ang) * len, ang };
+  }
+
+  function updateHud() {
+    hudHits.textContent = hits;
+    hudThrown.textContent = thrown;
+    hudLeft.textContent = ROUND_BIRDS - thrown;
+    pullBtn.disabled = roundOver || thrown >= ROUND_BIRDS || birds.length >= 2;
+  }
+
+  function checkEnd() {
+    if (thrown >= ROUND_BIRDS && birds.length === 0 && !roundOver) {
+      roundOver = true;
+      updateHud();
+      overHits.textContent = hits;
+      overQuip.textContent =
+        hits === 10 ? 'CLEAN ROUND. ANNIE OAKLEY IS TAKING NOTES.' :
+        hits >= 8 ? 'DEAD-EYE. SEE YOU ON THE PODIUM IN SEPTEMBER.' :
+        hits >= 5 ? 'RESPECTABLE SHOOTING, PARTNER.' :
+        hits >= 1 ? 'THE CLAYS ARE CRAFTY AT DUSK.' :
+        'THE CLAYS WON THIS ROUND.';
+      overMeals.textContent = hits > 0
+        ? `You dusted ${hits} bird${hits === 1 ? '' : 's'} — now imagine each one as meals on an Oklahoma table. That part takes real shells.`
+        : 'Good news: your donation never misses.';
+      overEl.classList.add('show');
+    }
+  }
+
+  function reset() {
+    birds = []; shards = []; tracers = [];
+    hits = 0; thrown = 0; roundOver = false;
+    overEl.classList.remove('show');
+    updateHud();
+  }
+
+  /* ---------- input ---------- */
+  cv.addEventListener('pointerdown', (e) => {
+    const r = cv.getBoundingClientRect();
+    shoot(e.clientX - r.left, e.clientY - r.top);
+  });
+  cv.addEventListener('pointermove', (e) => {
+    const r = cv.getBoundingClientRect();
+    aim.x = e.clientX - r.left; aim.y = e.clientY - r.top;
+  });
+  pullBtn.addEventListener('click', pull);
+  againBtn.addEventListener('click', reset);
+  window.addEventListener('keydown', (e) => {
+    if (e.code === 'Space' && wrapInView()) { e.preventDefault(); pull(); }
+  });
+  function wrapInView() {
+    const r = wrap.getBoundingClientRect();
+    return r.top < window.innerHeight && r.bottom > 0;
+  }
+
+  /* ---------- update + draw ---------- */
+  function tick(now) {
+    const dt = Math.min((now - last) / 1000, 0.05);
+    last = now;
+
+    const g = 1.28 * H;
+    for (let i = birds.length - 1; i >= 0; i--) {
+      const b = birds[i];
+      b.x += b.vx * dt; b.y += b.vy * dt; b.vy += g * dt; b.rot += b.spin * dt;
+      b.trail.push({ x: b.x, y: b.y });
+      if (b.trail.length > 22) b.trail.shift();
+      if (b.y > hz + 4 * S || b.x > W + 50) { birds.splice(i, 1); checkEnd(); }
+    }
+    for (let i = shards.length - 1; i >= 0; i--) {
+      const s = shards[i];
+      s.x += s.vx * dt; s.y += s.vy * dt; s.vy += g * 0.7 * dt;
+      s.rot += s.spin * dt; s.t -= dt;
+      if (s.t <= 0 || s.y > hz + 8 * S) shards.splice(i, 1);
+    }
+    for (let i = tracers.length - 1; i >= 0; i--) {
+      tracers[i].t -= dt;
+      if (tracers[i].t <= 0) tracers.splice(i, 1);
+    }
+    if (flash > 0) flash -= dt;
+
+    draw();
+    requestAnimationFrame(tick);
+  }
+
+  function draw() {
+    // dusk sky
+    const sky = ctx.createLinearGradient(0, 0, 0, H);
+    sky.addColorStop(0, COLORS.skyTop); sky.addColorStop(0.5, COLORS.skyMid);
+    sky.addColorStop(0.8, COLORS.skyLow); sky.addColorStop(1, COLORS.skyHorizon);
+    ctx.fillStyle = sky; ctx.fillRect(0, 0, W, H);
+
+    // plat grid
+    ctx.strokeStyle = 'rgba(251,250,246,0.045)'; ctx.lineWidth = 1;
+    ctx.beginPath();
+    for (let x = 48; x < W; x += 48) { ctx.moveTo(x, 0); ctx.lineTo(x, H); }
+    for (let y = 48; y < H; y += 48) { ctx.moveTo(0, y); ctx.lineTo(W, y); }
+    ctx.stroke();
+
+    // stars + sun
+    ctx.fillStyle = 'rgba(251,250,246,0.5)';
+    stars.forEach(s => { ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 7); ctx.fill(); });
+    const sunX = W * 0.16, sunY = H * 0.2;
+    ctx.globalAlpha = 0.1; ctx.strokeStyle = COLORS.wheat;
+    ctx.beginPath(); ctx.arc(sunX, sunY, 56 * S, 0, 7); ctx.stroke();
+    ctx.globalAlpha = 0.22;
+    ctx.beginPath(); ctx.arc(sunX, sunY, 41 * S, 0, 7); ctx.stroke();
+    ctx.globalAlpha = 0.92; ctx.fillStyle = COLORS.wheat;
+    ctx.beginPath(); ctx.arc(sunX, sunY, 26 * S, 0, 7); ctx.fill();
+    ctx.globalAlpha = 1;
+
+    // ground
+    ctx.fillStyle = COLORS.ground;
+    ctx.beginPath();
+    ctx.moveTo(0, hz + 6 * S);
+    ctx.quadraticCurveTo(W * 0.3, hz - 6 * S, W * 0.6, hz + 4 * S);
+    ctx.quadraticCurveTo(W * 0.85, hz + 10 * S, W, hz);
+    ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath(); ctx.fill();
+
+    // cedars
+    ctx.fillStyle = COLORS.cedar;
+    cedars.forEach(c => {
+      ctx.beginPath();
+      ctx.moveTo(c.x, hz + 4 * S);
+      ctx.lineTo(c.x + c.w * S * 0.5, hz + 4 * S - c.h * S);
+      ctx.lineTo(c.x + c.w * S, hz + 4 * S);
+      ctx.closePath(); ctx.fill();
+    });
+
+    // trap house
+    ctx.fillStyle = COLORS.ground; ctx.strokeStyle = COLORS.slate; ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(trap.x - 36 * S, hz + 4 * S);
+    ctx.lineTo(trap.x - 26 * S, hz - 20 * S);
+    ctx.lineTo(trap.x + 24 * S, hz - 24 * S);
+    ctx.lineTo(trap.x + 38 * S, hz + 4 * S);
+    ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = COLORS.clay;
+    ctx.fillRect(trap.x - 10 * S, hz - 22 * S, 20 * S, 5 * S);
+
+    // station marker
+    ctx.fillStyle = COLORS.slate;
+    ctx.fillRect(shooter.x + 56 * S, hz - 18 * S, 3 * S, 24 * S);
+    ctx.fillStyle = COLORS.clay;
+    ctx.fillRect(shooter.x + 48 * S, hz - 32 * S, 20 * S, 16 * S);
+    ctx.fillStyle = COLORS.paper;
+    ctx.font = `${10 * S}px "IBM Plex Mono", monospace`;
+    ctx.textAlign = 'center';
+    ctx.fillText('4', shooter.x + 58 * S, hz - 20 * S);
+
+    // grass
+    ctx.strokeStyle = COLORS.sage; ctx.lineWidth = 1.5; ctx.globalAlpha = 0.8;
+    grass.forEach(t => {
+      ctx.beginPath(); ctx.moveTo(t.x, t.y);
+      ctx.quadraticCurveTo(t.x + 3, t.y - t.h, t.x + 6, t.y);
+      ctx.stroke();
+    });
+    ctx.globalAlpha = 1;
+
+    // bird trails
+    birds.forEach(b => {
+      ctx.strokeStyle = COLORS.clay; ctx.lineWidth = 2;
+      ctx.setLineDash([6, 8]); ctx.globalAlpha = 0.55;
+      ctx.beginPath();
+      b.trail.forEach((p, i) => i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y));
+      ctx.stroke();
+      ctx.setLineDash([]); ctx.globalAlpha = 1;
+    });
+
+    // birds
+    birds.forEach(b => {
+      ctx.save();
+      ctx.translate(b.x, b.y);
+      ctx.rotate(-0.42 + Math.sin(b.rot) * 0.12);
+      ctx.fillStyle = COLORS.clay;
+      ellipse(0, 0, 14 * S, 5.5 * S);
+      ctx.fillStyle = COLORS.wheat;
+      ellipse(0, -2.5 * S, 14 * S, 4.5 * S);
+      ctx.fillStyle = COLORS.clay;
+      ellipse(0, -3 * S, 8 * S, 2.6 * S);
+      ctx.restore();
+    });
+
+    // shards
+    shards.forEach(s => {
+      ctx.save();
+      ctx.globalAlpha = Math.max(s.t, 0);
+      ctx.translate(s.x, s.y); ctx.rotate(s.rot);
+      ctx.fillStyle = s.c;
+      ctx.fillRect(-s.r, -s.r * 0.5, s.r * 2, s.r);
+      ctx.restore();
+    });
+
+    // tracers (shot string)
+    tracers.forEach(t => {
+      ctx.strokeStyle = COLORS.wheat; ctx.lineWidth = 2.5;
+      ctx.globalAlpha = Math.min(t.t / 0.18, 1) * 0.9;
+      ctx.setLineDash([1, 7]); ctx.lineCap = 'round';
+      ctx.beginPath(); ctx.moveTo(t.x1, t.y1); ctx.lineTo(t.x2, t.y2); ctx.stroke();
+      ctx.setLineDash([]); ctx.globalAlpha = 1;
+    });
+
+    drawShooter();
+  }
+
+  function ellipse(x, y, rx, ry) {
+    ctx.beginPath(); ctx.ellipse(x, y, rx, ry, 0, 0, 7); ctx.fill();
+  }
+
+  function drawShooter() {
+    const sh = shooter.shoulder, feetY = shooter.feetY, sx = shooter.x;
+    const m = muzzle();
+    ctx.lineCap = 'round';
+    // legs
+    ctx.strokeStyle = COLORS.silhouette;
+    ctx.lineWidth = 10 * S;
+    ctx.beginPath(); ctx.moveTo(sx - 8 * S, feetY); ctx.lineTo(sx - 2 * S, feetY - 46 * S); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(sx + 10 * S, feetY); ctx.lineTo(sx + 2 * S, feetY - 46 * S); ctx.stroke();
+    // torso (slight lean toward aim)
+    const lean = (aim.x < sx ? -4 : 2) * S;
+    ctx.fillStyle = COLORS.silhouette;
+    ctx.beginPath();
+    ctx.moveTo(sx - 11 * S, feetY - 42 * S);
+    ctx.lineTo(sx + 11 * S, feetY - 42 * S);
+    ctx.lineTo(sx + 8 * S + lean, sh.y - 4 * S);
+    ctx.lineTo(sx - 10 * S + lean, sh.y - 2 * S);
+    ctx.closePath(); ctx.fill();
+    // vest stripe
+    ctx.strokeStyle = COLORS.clay; ctx.lineWidth = 5 * S;
+    ctx.beginPath();
+    ctx.moveTo(sx - 9 * S + lean * 0.6, feetY - 62 * S);
+    ctx.lineTo(sx + 10 * S + lean * 0.6, feetY - 64 * S);
+    ctx.stroke();
+    // head + cap (tilts a touch with aim)
+    const hx = sx - 2 * S + lean, hy = sh.y - 16 * S;
+    ctx.fillStyle = COLORS.silhouette;
+    ctx.beginPath(); ctx.arc(hx, hy, 9.5 * S, 0, 7); ctx.fill();
+    const capDir = aim.x < sx ? -1 : 1;
+    ctx.beginPath();
+    ctx.moveTo(hx + capDir * 8 * S, hy - 3 * S);
+    ctx.lineTo(hx + capDir * 20 * S, hy - 2 * S);
+    ctx.lineTo(hx + capDir * 7 * S, hy - 8 * S);
+    ctx.closePath(); ctx.fill();
+    // gun barrel toward aim
+    ctx.strokeStyle = COLORS.silhouette;
+    ctx.lineWidth = 5.5 * S;
+    ctx.beginPath(); ctx.moveTo(sh.x, sh.y); ctx.lineTo(m.x, m.y); ctx.stroke();
+    // stock
+    ctx.lineWidth = 9 * S;
+    ctx.beginPath();
+    ctx.moveTo(sh.x, sh.y);
+    ctx.lineTo(sh.x - Math.cos(m.ang) * 14 * S, sh.y - Math.sin(m.ang) * 14 * S + 6 * S);
+    ctx.stroke();
+    // arms
+    ctx.lineWidth = 8 * S;
+    const grip = { x: sh.x + Math.cos(m.ang) * 36 * S, y: sh.y + Math.sin(m.ang) * 36 * S };
+    ctx.beginPath(); ctx.moveTo(sx + 4 * S, sh.y + 6 * S); ctx.lineTo(grip.x, grip.y); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(sx + 6 * S, sh.y + 8 * S); ctx.lineTo(sh.x + Math.cos(m.ang) * 12 * S, sh.y + Math.sin(m.ang) * 12 * S); ctx.stroke();
+    // muzzle flash
+    if (flash > 0) {
+      ctx.strokeStyle = COLORS.wheat; ctx.lineWidth = 2.5 * S;
+      for (let i = -1; i <= 1; i++) {
+        const a = m.ang + i * 0.45;
+        ctx.beginPath();
+        ctx.moveTo(m.x, m.y);
+        ctx.lineTo(m.x + Math.cos(a) * 14 * S, m.y + Math.sin(a) * 14 * S);
+        ctx.stroke();
+      }
+    }
+  }
+
+  updateHud();
+  requestAnimationFrame(tick);
+})();
+</script>
+
+</body>
+</html>
