@@ -157,6 +157,7 @@
     .photo-grid { grid-template-columns: 1fr; }
     .photo.wide { grid-column: span 1; }
     .photo.wide img { aspect-ratio: 3 / 2; }
+    .photo.wide.sponsor-board img { aspect-ratio: auto; }
   }
 
   /* ---------- mile markers / sections ---------- */
@@ -303,7 +304,9 @@
   }
 
   /* ---------- sponsor board ---------- */
-  .sponsor-board img { aspect-ratio: auto; height: auto; }
+  .photo.wide.sponsor-board img, .photo.sponsor-board img {
+    aspect-ratio: auto; height: auto; object-fit: unset;
+  }
   .photo.feature img { aspect-ratio: 3 / 2; }
   .photo.feature figcaption b { color: var(--hope); }
   .sponsor-names {
